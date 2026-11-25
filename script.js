@@ -170,18 +170,6 @@ $(document).ready(function () {
     $(window).on("scroll", animateDashboardCounters);
     animateDashboardCounters();
 
-    // Last updated timer
-    let dashSeconds = 0;
-    if ($("#lastUpdated").length) {
-        setInterval(function () {
-            dashSeconds += 5;
-            let text;
-            if (dashSeconds < 60) text = dashSeconds + "s ago";
-            else text = Math.floor(dashSeconds / 60) + "m ago";
-            $("#lastUpdated").text(text);
-        }, 5000);
-    }
-
 
     /* ---------- 7. Contact Form Validation ---------- */
     $("#contactForm").on("submit", function (e) {
@@ -227,7 +215,6 @@ $(document).ready(function () {
 
         // If valid, show success
         if (valid) {
-            $("#contactForm")[0].reset();
             $("#formSuccess").fadeIn(300);
 
             setTimeout(function () {
@@ -285,7 +272,7 @@ const knowledgeBase = [
     },
     {
         keywords: ["dashboard", "monitoring", "data", "live"],
-        answer: "We have a live Dashboard page where you can see real-time energy monitoring metrics across Pakistan, including PKR revenue and CO2 saved!"
+        answer: "The Dashboard page currently shows sample metrics for demonstration; it is not connected to live data."
     },
     {
         keywords: ["project", "portfolio", "bahawalpur", "lahore", "karachi", "quetta"],
