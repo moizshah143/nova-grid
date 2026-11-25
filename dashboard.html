@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NOVA GRID Dashboard — real-time energy monitoring across Pakistan.">
+    <title>Dashboard | NOVA GRID</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="font-dmsans bg-dark text-white overflow-x-hidden">
+
+    <!-- Skip link -->
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Ambient blobs -->
+    <div class="ambient-blob blob-a" aria-hidden="true"></div>
+    <div class="ambient-blob blob-b" aria-hidden="true"></div>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-icon"><i class="fa-solid fa-bolt"></i></span>
+                NOVA<span class="brand-green">GRID</span>
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="solutions.html">Solutions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="technology.html">Technology</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="dashboard.html">Dashboard</a></li>
+                </ul>
+                
+                <!-- Button -->
+                <a href="contact.html" class="nav-btn mt-3 mt-lg-0">
+                    Let's Talk <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main">
+
+        <!-- ================= DASHBOARD HEADER ================= -->
+        <section class="dashboard-intro">
+            <div class="container">
+                <span class="section-tag">LIVE MONITORING</span>
+                <h1 class="font-outfit">
+                    Energy Dashboard.<br>
+                    <span>Real-Time Pakistan.</span>
+                </h1>
+                <p class="section-description">
+                    Live insights into NOVA GRID's renewable energy network
+                    across Pakistan — updated every 5 seconds.
+                </p>
+                <div class="dashboard-live">
+                    <span class="live-dot"></span>
+                    Live Data &middot; <span id="lastUpdated">just now</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= METRICS ================= -->
+        <section class="dashboard-section">
+            <div class="container">
+
+                <div class="row g-4">
+
+                    <!-- Total Generation -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="metric-card glass">
+                            <div class="metric-top">
+                                <div class="metric-icon"><i class="fa-solid fa-bolt"></i></div>
+                                <span class="metric-trend up"><i class="fa-solid fa-arrow-up"></i> 4.2%</span>
+                            </div>
+                            <div class="metric-value font-outfit" data-target="1240">0<span class="unit"> MW</span></div>
+                            <div class="metric-label">Total Generation</div>
+                        </div>
+                    </div>
+
+                    <!-- Revenue -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="metric-card glass">
+                            <div class="metric-top">
+                                <div class="metric-icon"><i class="fa-solid fa-coins"></i></div>
+                                <span class="metric-trend up"><i class="fa-solid fa-arrow-up"></i> 7.8%</span>
+                            </div>
+                            <div class="metric-value font-outfit" data-target="48.6" data-prefix="₨ " data-suffix="M">₨ 0<span class="unit">M</span></div>
+                            <div class="metric-label">Monthly Revenue (PKR)</div>
+                        </div>
+                    </div>
+
+                    <!-- CO2 Saved -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="metric-card glass">
+                            <div class="metric-top">
+                                <div class="metric-icon"><i class="fa-solid fa-leaf"></i></div>
+                                <span class="metric-trend up"><i class="fa-solid fa-arrow-up"></i> 12%</span>
+                            </div>
+                            <div class="metric-value font-outfit" data-target="18500" data-suffix="t">0<span class="unit">t</span></div>
+                            <div class="metric-label">CO₂ Saved This Year</div>
+                        </div>
+                    </div>
+
+                    <!-- Active Sites -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="metric-card glass">
+                            <div class="metric-top">
+                                <div class="metric-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                <span class="metric-trend up"><i class="fa-solid fa-arrow-up"></i> 2 new</span>
+                            </div>
+                            <div class="metric-value font-outfit" data-target="142">0</div>
+                            <div class="metric-label">Active Sites</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ================= CHARTS + STATUS ================= -->
+                <div class="row g-4 mt-2">
+
+                    <!-- Weekly generation chart -->
+                    <div class="col-lg-7">
+                        <div class="panel glass">
+                            <div class="panel-head">
+                                <h4 class="font-outfit">Weekly Generation (MW)</h4>
+                                <span class="panel-tag">Last 7 days</span>
+                            </div>
+                            <div class="chart-bars" id="weeklyChart">
+                                <div class="bar" style="height: 55%"><span>Mon</span></div>
+                                <div class="bar" style="height: 72%"><span>Tue</span></div>
+                                <div class="bar" style="height: 68%"><span>Wed</span></div>
+                                <div class="bar" style="height: 85%"><span>Thu</span></div>
+                                <div class="bar" style="height: 78%"><span>Fri</span></div>
+                                <div class="bar" style="height: 92%"><span>Sat</span></div>
+                                <div class="bar" style="height: 88%"><span>Sun</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Region status -->
+                    <div class="col-lg-5">
+                        <div class="panel glass">
+                            <div class="panel-head">
+                                <h4 class="font-outfit">Grid Status by Region</h4>
+                                <span class="panel-tag">Live</span>
+                            </div>
+
+                            <div class="status-row">
+                                <div><span class="status-dot online"></span> Punjab</div>
+                                <span class="status-value">420 MW</span>
+                            </div>
+                            <div class="status-row">
+                                <div><span class="status-dot online"></span> Sindh</div>
+                                <span class="status-value">385 MW</span>
+                            </div>
+                            <div class="status-row">
+                                <div><span class="status-dot online"></span> KPK</div>
+                                <span class="status-value">210 MW</span>
+                            </div>
+                            <div class="status-row">
+                                <div><span class="status-dot warning"></span> Balochistan</div>
+                                <span class="status-value">95 MW</span>
+                            </div>
+                            <div class="status-row">
+                                <div><span class="status-dot online"></span> Islamabad</div>
+                                <span class="status-value">130 MW</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ================= ENERGY MIX + ALERTS ================= -->
+                <div class="row g-4 mt-2">
+
+                    <!-- Energy mix -->
+                    <div class="col-lg-6">
+                        <div class="panel glass">
+                            <div class="panel-head">
+                                <h4 class="font-outfit">Energy Mix</h4>
+                                <span class="panel-tag">Today</span>
+                            </div>
+
+                            <div class="mix-row">
+                                <span>Solar</span>
+                                <div class="mix-bar"><div class="mix-fill" style="width: 48%"></div></div>
+                                <span class="mix-value">48%</span>
+                            </div>
+                            <div class="mix-row">
+                                <span>Wind</span>
+                                <div class="mix-bar"><div class="mix-fill" style="width: 32%"></div></div>
+                                <span class="mix-value">32%</span>
+                            </div>
+                            <div class="mix-row">
+                                <span>Storage</span>
+                                <div class="mix-bar"><div class="mix-fill" style="width: 14%"></div></div>
+                                <span class="mix-value">14%</span>
+                            </div>
+                            <div class="mix-row">
+                                <span>Other</span>
+                                <div class="mix-bar"><div class="mix-fill" style="width: 6%"></div></div>
+                                <span class="mix-value">6%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent alerts -->
+                    <div class="col-lg-6">
+                        <div class="panel glass">
+                            <div class="panel-head">
+                                <h4 class="font-outfit">Recent Alerts</h4>
+                                <span class="panel-tag">Last 24h</span>
+                            </div>
+
+                            <div class="alert-row">
+                                <i class="fa-solid fa-circle-check alert-icon ok"></i>
+                                <div>
+                                    <strong>Jhimpir site back online</strong>
+                                    <small>2 minutes ago</small>
+                                </div>
+                            </div>
+
+                            <div class="alert-row">
+                                <i class="fa-solid fa-triangle-exclamation alert-icon warn"></i>
+                                <div>
+                                    <strong>Quetta microgrid — low battery</strong>
+                                    <small>1 hour ago</small>
+                                </div>
+                            </div>
+
+                            <div class="alert-row">
+                                <i class="fa-solid fa-circle-check alert-icon ok"></i>
+                                <div>
+                                    <strong>Bahawalpur solar output +8%</strong>
+                                    <small>3 hours ago</small>
+                                </div>
+                            </div>
+
+                            <div class="alert-row">
+                                <i class="fa-solid fa-circle-info alert-icon info"></i>
+                                <div>
+                                    <strong>Scheduled maintenance: Karachi</strong>
+                                    <small>Tomorrow 02:00 AM</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ================= DASHBOARD CTA ================= -->
+                <div class="dashboard-cta glass mt-5">
+                    <div>
+                        <h3 class="font-outfit">Want full access?</h3>
+                        <p>Connect your project to NOVA GRID and monitor it live.</p>
+                    </div>
+                    <a href="contact.html" class="primary-btn">
+                        Request Access <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer glass-footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <a class="navbar-brand" href="index.html">
+                        <span class="brand-icon"><i class="fa-solid fa-bolt"></i></span>
+                        NOVA<span class="brand-green">GRID</span>
+                    </a>
+                    <p class="footer-description">
+                        Powering Pakistan's smarter world with innovative
+                        and sustainable energy solutions.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <h5 class="font-outfit">Quick Links</h5>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <h5 class="font-outfit">Our Solutions</h5>
+                    <a href="solutions.html">Solar Energy</a>
+                    <a href="solutions.html">Wind Energy</a>
+                    <a href="solutions.html">Smart Cities</a>
+                    <a href="technology.html">Technology</a>
+                </div>
+
+                <div class="col-lg-3">
+                    <h5 class="font-outfit">Get In Touch</h5>
+                    <p><i class="fa-solid fa-envelope"></i> hello@novagrid.pk</p>
+                    <p><i class="fa-solid fa-location-dot"></i> Islamabad, Pakistan</p>
+                </div>
+            </div>
+
+                      <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>© 2026 NOVA GRID. All Rights Reserved.</p>
+                
+                <!-- Yahan aapka naam hai -->
+                <p class="developer-credit">
+                    Designed & Developed by <span class="moiz-signature">Muhammad Moiz</span>
+                </p>
+            </div>        </div>
+    </footer>
+    <!-- ================= NOVA GRID AI CHATBOT ================= -->
+    <!-- Floating Chat Button -->
+    <div class="chat-toggle-btn" id="chatToggle">
+        <i class="fa-solid fa-bolt"></i> Chat with NOVA
+    </div>
+
+    <!-- Chat Window -->
+    <div class="chat-window glass" id="chatWindow">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar"><i class="fa-solid fa-robot"></i></div>
+                <div>
+                    <h5>NOVA Assistant</h5>
+                    <small>Instant answers • Smart energy guide</small>
+                </div>
+            </div>
+            <div class="chat-close" id="chatClose"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+
+        <div class="chat-body" id="chatBody">
+            <div class="chat-message bot-message">
+                Welcome to NOVA GRID! ⚡ I'm your automated energy assistant. Ask me about our solutions, projects in Pakistan, or how to get started.
+            </div>
+        </div>
+        <!-- Quick Replies -->
+        <div class="chat-quick-replies" id="quickReplies">
+            <button class="quick-btn" onclick="sendQuickReply('Services')">Services</button>
+            <button class="quick-btn" onclick="sendQuickReply('Pricing')">Pricing</button>
+            <button class="quick-btn" onclick="sendQuickReply('Timeline')">Timeline</button>
+            <button class="quick-btn" onclick="sendQuickReply('Projects')">Projects</button>
+            <button class="quick-btn" onclick="sendQuickReply('Contact')">Contact</button>
+        </div>
+
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Ask about solar, wind, pricing..." autocomplete="off">
+            <button id="chatSend"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+        <div class="chat-note">Automated assistant • For custom quotes, visit Contact page.</div>
+    </div>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+
+</body>
+</html>
