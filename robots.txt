@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nova-grid-one.vercel.app/sitemap.xml
